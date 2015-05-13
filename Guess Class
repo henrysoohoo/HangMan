@@ -1,0 +1,26 @@
+public class guess
+{
+  private String input;
+  private int lives=6;
+  
+  public guess(String input)
+  {
+    this.input=input;
+  }
+  public String getWord()
+  {
+    return input;
+  }
+  public void lower()
+  {
+    lives--;
+  }
+  public int getLives()
+  {
+    return lives;
+  }
+  public String toString()
+  {
+    return input;
+  }
+}
