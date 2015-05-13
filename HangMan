@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class hangman
+{
+  public static void main(String [] args)
+  {
+   String lettersGuessed=" ";
+    int guesses=0;
+   Scanner console = new Scanner(System.in);
+   System.out.println("This Game is for 2 Players");
+   System.out.println("Instructions: Player 1 inputs word and Player 2 must guess 1 letter at a time. "+ 
+                        "Player 2 has 6 lives");
+   System.out.println("Player 1: What is the word? ");
+   String input = console.nextLine();
+   guess secretWord=new guess(input);
+   System.out.println("Player 2, please input 1 letter per guess");
+   while(secretWord.getLives()>0)
+   {
+     System.out.println("Guess: ");
+     String letter=console.nextLine();
+     if(!(secretWord.toString().contains(letter)))
+     {
+      secretWord.lower(); 
+     }
+     else
+       guesses++;
+   }
+   System.out.println("Game Over"+"# of Guesses: " +guesses);
+  }
+}
