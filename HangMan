@@ -1,9 +1,13 @@
 import java.util.*;
+import java.util.ArrayList;
 
 public class hangman
 {
   public static void main(String [] args)
   {
+    boolean playGame=true;
+    while(playGame)
+    {
    String lettersGuessed=" ";
     int guesses=0;
    Scanner console = new Scanner(System.in);
@@ -13,18 +17,54 @@ public class hangman
    System.out.println("Player 1: What is the word? ");
    String input = console.nextLine();
    guess secretWord=new guess(input);
-   System.out.println("Player 2, please input 1 letter per guess");
-   while(secretWord.getLives()>0)
+   ArrayList <String> allGuesses = new ArrayList <String>();
+   int secretLength=secretWord.toString().length();
+   System.out.println("Player 2, please input 1 letter per guess. "+
+                        "If more than one letter is inputed, only first letter will be considered.");
+   List <String> blankWord= new ArrayList <String>();
+   for(int k=0; k<secretLength;k++)
    {
-     System.out.println("Guess: ");
-     String letter=console.nextLine();
-     if(!(secretWord.toString().contains(letter)))
-     {
-      secretWord.lower(); 
-     }
-     else
-       guesses++;
+     blankWord.add("_");
+     k=k;
    }
-   System.out.println("Game Over"+"# of Guesses: " +guesses);
+   System.out.println(blankWord.toString());
+      while(blankWord.contains("_") && secretWord.getLives()>0)
+     {
+            System.out.println("Letters Tried: "+allGuesses.toString()+ "     Guess: ");
+   {
+       String letter=console.nextLine().toLowerCase().substring(0,1);
+       if(!(allGuesses.contains(letter)))
+       {
+         allGuesses.add(letter);
+         if(secretWord.toString().contains(letter))
+         { 
+           for(int j=0;j<secretLength;j++)
+             if(secretWord.toString().substring(j,j+1).contains(letter))
+              blankWord.set(j, letter);
+           System.out.println(blankWord.toString());
+         }
+         else
+         {
+           System.out.println(blankWord.toString());
+           secretWord.lower();
+         }
+       }
+       else
+         System.out.println("Letter already guessed");
+     }
+   }  
+   if(secretWord.getLives()==0)
+     System.out.println("Game Over! Looks like you got stumped!");
+   if(!(blankWord.contains("_")))
+     System.out.print("YAY!!! You guessed it!");
+   System.out.print("Letters Tried: "+allGuesses.toString());
+   System.out.println("# of Guesses: " +allGuesses.size());
+   System.out.println("Yes or No, play again?");
+   String answer = console.nextLine().toLowerCase();
+   if(answer.equals("y")||answer.equals("yes"))
+     playGame=true;
+   else
+     playGame=false;
+    }
   }
-}
+} 
