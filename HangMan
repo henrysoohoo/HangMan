@@ -19,9 +19,8 @@ public class hangman
    guess secretWord=new guess(input);
    ArrayList <String> allGuesses = new ArrayList <String>();
    int secretLength=secretWord.toString().length();
-   System.out.println("Player 2, please input 1 letter per guess. "+
-                        "If more than one letter is inputed, only first letter will be considered.");
-   List <String> blankWord= new ArrayList <String>();
+    System.out.println("Letters Tried: "+allGuesses.toString()+"     Lives Left: "+
+                               secretWord.getLives()+ "     Guess again: ");
    for(int k=0; k<secretLength;k++)
    {
      blankWord.add("_");
