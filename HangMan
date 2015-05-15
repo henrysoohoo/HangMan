@@ -8,8 +8,6 @@ public class hangman
     boolean playGame=true;
     while(playGame)
     {
-   String lettersGuessed=" ";
-    int guesses=0;
    Scanner console = new Scanner(System.in);
    System.out.println("This Game is for 2 Players");
    System.out.println("Instructions: Player 1 inputs word and Player 2 must guess 1 letter at a time. "+ 
@@ -18,9 +16,8 @@ public class hangman
    String input = console.nextLine();
    guess secretWord=new guess(input);
    ArrayList <String> allGuesses = new ArrayList <String>();
+   ArrayList <String> blankWord = new ArrayList <String>();
    int secretLength=secretWord.toString().length();
-    System.out.println("Letters Tried: "+allGuesses.toString()+"     Lives Left: "+
-                               secretWord.getLives()+ "     Guess again: ");
    for(int k=0; k<secretLength;k++)
    {
      blankWord.add("_");
@@ -29,7 +26,8 @@ public class hangman
    System.out.println(blankWord.toString());
       while(blankWord.contains("_") && secretWord.getLives()>0)
      {
-            System.out.println("Letters Tried: "+allGuesses.toString()+ "     Guess: ");
+            System.out.print("Lives Left: "+secretWord.getLives());
+            System.out.println("     Letters Tried: "+allGuesses.toString()+ "     Guess again: ");
    {
        String letter=console.nextLine().toLowerCase().substring(0,1);
        if(!(allGuesses.contains(letter)))
