@@ -18,6 +18,8 @@ public class hangman
    ArrayList <String> allGuesses = new ArrayList <String>();
    ArrayList <String> blankWord = new ArrayList <String>();
    int secretLength=secretWord.toString().length();
+   for (int f=0; f<100; f++)
+   secretWord.fillSpace();
    for(int k=0; k<secretLength;k++)
    {
      blankWord.add("_");
