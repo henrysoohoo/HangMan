@@ -23,4 +23,8 @@ public class guess
   {
     return input;
   }
+  public String fillSpace()
+  {
+    return "   ";
+  }
 }
