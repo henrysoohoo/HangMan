@@ -14,22 +14,25 @@ public class hangman
                         "Player 2 has 6 lives");
    System.out.println("Player 1: What is the word? ");
    String input = console.nextLine();
-   guess secretWord=new guess(input);
+   guess secretWord=new guess(input.toLowerCase());
    ArrayList <String> allGuesses = new ArrayList <String>();
    ArrayList <String> blankWord = new ArrayList <String>();
    int secretLength=secretWord.toString().length();
-   for (int f=0; f<100; f++)
-   secretWord.fillSpace();
    for(int k=0; k<secretLength;k++)
    {
      blankWord.add("_");
      k=k;
    }
-   System.out.println(blankWord.toString());
+   for (int f=0; f<100; f++)
+   {
+     System.out.println("   ");
+   }
+     secretWord.drawGallows();
+     System.out.println(blankWord.toString());
       while(blankWord.contains("_") && secretWord.getLives()>0)
      {
             System.out.print("Lives Left: "+secretWord.getLives());
-            System.out.println("     Letters Tried: "+allGuesses.toString()+ "     Guess again: ");
+            System.out.println("     Letters Tried: "+allGuesses.toString()+ "     Guess: ");
    {
        String letter=console.nextLine().toLowerCase().substring(0,1);
        if(!(allGuesses.contains(letter)))
@@ -40,12 +43,14 @@ public class hangman
            for(int j=0;j<secretLength;j++)
              if(secretWord.toString().substring(j,j+1).contains(letter))
               blankWord.set(j, letter);
+           secretWord.drawGallows();
            System.out.println(blankWord.toString());
          }
          else
          {
-           System.out.println(blankWord.toString());
            secretWord.lower();
+           secretWord.drawGallows();
+           System.out.println(blankWord.toString()); 
          }
        }
        else
@@ -54,6 +59,7 @@ public class hangman
    }  
    if(secretWord.getLives()==0)
      System.out.println("Game Over! Looks like you got stumped!");
+     System.out.println("The word was "+input);
    if(!(blankWord.contains("_")))
      System.out.print("YAY!!! You guessed it!");
    System.out.print("Letters Tried: "+allGuesses.toString());
