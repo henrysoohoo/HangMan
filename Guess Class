@@ -27,4 +27,63 @@ public class guess
   {
     return "   ";
   }
+  public void drawGallows()
+  {
+    if(getLives()==6)
+    { System.out.println(       "     _________  ");
+      System.out.println(       "    |         | " );
+      System.out.println(       "              | " );
+      System.out.println(       "              | " );
+      System.out.println(       "              | " );
+      System.out.println(       "            _____"); 
+    }
+    else if(getLives()==5)
+    { System.out.println(       "     _________  ");
+      System.out.println(       "    |         | " );
+      System.out.println(       "     0        | " );
+      System.out.println(       "              | " );
+      System.out.println(       "              | " );
+      System.out.println(       "            _____"); 
+    }
+    else if(getLives()==4)
+    { System.out.println(       "     _________  ");
+      System.out.println(       "    |         | " );
+      System.out.println(       "     0        | " );
+      System.out.println(       "     |        | " );
+      System.out.println(       "              | " );
+      System.out.println(       "            _____"); 
+    } 
+    else if(getLives()==3)
+    { System.out.println(       "     _________  ");
+      System.out.println(       "    |         | " );
+      System.out.println(       "     0        | " );
+      System.out.println(       "   / |        | " );
+      System.out.println(       "              | " );
+      System.out.println(       "            _____"); 
+    }
+    else if(getLives()==2)
+    { System.out.println(       "     _________  ");
+      System.out.println(       "    |         | " );
+      System.out.println(       "     0        | " );
+      System.out.println(       "   / | \\      | " );
+      System.out.println(       "              | " );
+      System.out.println(       "            _____"); 
+    }
+    else if(getLives()==1)
+    { System.out.println(       "     _________  ");
+      System.out.println(       "    |         | " );
+      System.out.println(       "     0        | " );
+      System.out.println(       "   / | \\      | " );
+      System.out.println(       "   /          | " );
+      System.out.println(       "            _____"); 
+    }
+     else
+    { System.out.println(       "     _________  ");
+      System.out.println(       "    |         | " );
+      System.out.println(       "     0        | " );
+      System.out.println(       "   / | \\      | " );
+      System.out.println(       "   /   \\      | " );
+      System.out.println(       "            _____"); 
+    }
+  }
 }
